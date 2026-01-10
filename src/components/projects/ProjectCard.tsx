@@ -67,14 +67,20 @@ const ProjectCard = ({
         <p className="text-muted-foreground leading-relaxed">{description}</p>
       </div>
 
-      {/* Architecture Diagram */}
+      {/* Architecture Diagram - Responsive */}
       {simpleDiagram && (
-        <div className="flex items-center gap-4">
-          <div className="flex-1">{simpleDiagram}</div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div className="flex-1 overflow-hidden rounded-md">
+            <div className="w-full overflow-x-auto">
+              {simpleDiagram}
+            </div>
+          </div>
           {detailedDiagram && (
-            <ArchitectureModal title={title}>
-              {detailedDiagram}
-            </ArchitectureModal>
+            <div className="flex sm:flex-col justify-center">
+              <ArchitectureModal title={title}>
+                {detailedDiagram}
+              </ArchitectureModal>
+            </div>
           )}
         </div>
       )}
